@@ -181,3 +181,7 @@ footer {
   display: grid;
   row-gap: 15px;
 }
+
+.ul {
+  list-style-type: none;
+}

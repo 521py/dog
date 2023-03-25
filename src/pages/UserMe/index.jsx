@@ -1,30 +1,25 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
 import { getUserMe } from "../../api/user"
 import { useAuth } from "../../hooks/useAuth"
 
 export const UserMe = () => {
 
-    const [userData, setUserData] = useState()
     const {token} = useAuth()
 
-
-    useEffect(() => {
-        const fetchData = async () => {
+    const { data: userData, isLoading, isError, error } = useQuery({
+        queryKey: ['getUserMe'],
+        queryFn: async () => {
             const res = await getUserMe(token)
 
             if (res.ok) {
-                const responce = await res.json();
-                return setUserData(responce)
+                return await res.json();
             }
-
-            throw new Error("произошла ошибка")
         }
+    })
+    if (isLoading) return <p>Загрузка...</p>
 
-        fetchData()
-    }, [token])
-
-    if (!userData) return <div>UserMe</div>
-
+    if (isError) return <p>Произошла ошибка: {error}</p>
+    
     return (
         <div>
         <h1>пользователь</h1>

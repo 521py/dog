@@ -10,6 +10,12 @@ import { Products } from './pages/Products';
 import { UserMe } from './pages/UserMe';
 import { Signin } from './pages/Signin';
 import { Signup } from './pages/Signup';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -40,7 +46,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

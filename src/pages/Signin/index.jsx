@@ -1,3 +1,4 @@
+import { useMutation } from "@tanstack/react-query";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
@@ -20,17 +21,28 @@ export const Signin = () => {
         email: '',
     }
 
+    const { mutateAsync, isLoading, isError, error } = useMutation({
+        mutationFn: async (values) => {
+            const res = await signinFetch(values)
+            if (res.ok) {
+                const responce = await res.json();
+                localStorage.setItem('token', responce.token)
+                return navigate('/products')
+            }
+            if (isLoading) return <p>Загрузка...</p>
+            if (isError) return <p>Произошла ошибка: {error}</p>
+
+            return alert({ error })
+
+        },
+    })
+
     const onSubmit = async (values) => {
-        const res = await signinFetch(values)
+        const res = await mutateAsync(values)
 
         if (res.ok) {
-            const responce = await res.json();
-            localStorage.setItem('token', responce.token)
-            return navigate('/products')
-
-
+            return mutateAsync(values)
         }
-        return alert('Что то пошло не так')
     }
 
     return (

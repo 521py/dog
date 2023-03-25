@@ -8,10 +8,10 @@ export const ProductCard = ({ product }) => {
 
             <div className="container">
                 <h4><b>{product.name}</b></h4>
-                <ul>
-                    <li>Количество: {product.stock} шт.</li>
-                    <li>Цена: {product.price} руб.</li>
-                    <li>Скидка: {product.discount}%</li>
+                <ul className="ul">
+                    <li>📦 Количество: {product.stock} шт.</li>
+                    <li>💸 Цена: {product.price} руб.</li>
+                    <li>⚡️ Скидка: {product.discount}%</li>
                 </ul>
 
                 <div className="btn_wrapper">

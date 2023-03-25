@@ -1,3 +1,4 @@
+import { useMutation } from "@tanstack/react-query";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
@@ -25,20 +26,30 @@ export const Signup = () => {
         group: '9-gr'
     }
 
-    const onSubmit = async (values) => {
-        const res = await signupFetch(values)
-
-        if (res.ok) {
-            const resAuth = await signinFetch({email: values.email, password: values.password})
-
-            if (resAuth.ok) {
-                const responceAuth = await resAuth.json()
-                localStorage.setItem('token', responceAuth.token)
+    const { mutateAsync: mutateUp, isLoading, isError, error } = useMutation({
+        mutationFn: (values) => {
+            return signupFetch(values)
+        },
+    })
+    const { mutate: mutateIn, isLoading: isLoading2, isError: isError2, error: error2 } = useMutation({
+        mutationFn: async (values) => {
+            const res = await signinFetch(values)
+            if (res.ok) {
+                const responce = await res.json()
+                localStorage.setItem('token', responce.token)
                 return navigate('/products')
             }
+            if (isLoading2) return <p>Загрузка...</p>
+            if (isError2) return <p>Произошла ошибка: {error2}</p>
             return alert('Что то пошло не так')
+        },
+    })
 
+    const onSubmit = async (values) => {
+        const res = await mutateUp(values)
 
+        if (res.ok) {
+            return mutateIn({ email: values.email, password: values.password })
         }
         return alert('Что то пошло не так')
     }
