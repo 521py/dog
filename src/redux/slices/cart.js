@@ -16,6 +16,7 @@ export const cartSlice = createSlice({
             state.push({
                 id: action.payload,
                 count: 1,
+                isChecked: false,
             })
         },
         clearCart: () => {
@@ -39,19 +40,33 @@ export const cartSlice = createSlice({
                 return state
             }
         },
-
         removeFromCart: (state, action) => {
             // state = action.payload
             // return state
             return state.filter(el => el.id !== action.payload)
         },
-
         removeAllProductsFromCart: () => {
             return initialCartState
         },
+        changeCheckStatus: (state, action) => {
+            const productInCart = state.find(el => el.id === action.payload._id)
+
+            if (productInCart) {
+                productInCart.isChecked = action.payload.isChecked
+                return state
+            }
+
+            return state
+        }
     }
 })
 
-export const { addToCart, clearCart, removeFromCart, removeAllProductsFromCart, incrementProduct, decrementProduct } = cartSlice.actions
+export const { addToCart,
+    clearCart,
+    removeFromCart,
+    removeAllProductsFromCart,
+    incrementProduct,
+    decrementProduct,
+    changeCheckStatus } = cartSlice.actions
 
 export const cartReducer = cartSlice.reducer

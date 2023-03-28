@@ -2,6 +2,6 @@
 export const totalPrice = (count, price, discount) => {
 
     return (
-        count * price * (discount / 100)
+        count * price * (1 - discount / 100)
     )
 }

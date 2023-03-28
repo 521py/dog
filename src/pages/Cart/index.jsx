@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { getActualProduct } from "../../api/products"
+import { NoProductsInCart } from "../../components/NoProductsInCart"
 import { ProductCard } from "../../components/ProductCard"
 import { ProductCart } from "../../components/ProductCart"
 import { useAuth } from "../../hooks/useAuth"
@@ -16,15 +17,22 @@ export const Cart = () => {
     // getActualProduct
 
     const { data: products, isLoading, isError, error } = useQuery({
-        queryKey: ["getCartProduct", cart, token, cart.length],
+        queryKey: ["getCartProduct", token, cart.length],
         queryFn: async () => {
             return await Promise.allSettled(
-                cart.map(element => getActualProduct(token, element.id)
-                    .then(res => res.json())))
+                cart.map(async ProductInTheCart =>
+                    await getActualProduct(token, ProductInTheCart.id)
+                        .then(res => res.json())))
                 .then(res => res.map(el => el.value))
             // console.log(products)
-        }
+        },
+        enabled: !!cart.length,
     })
+
+    if (!cart.length) {
+        return <NoProductsInCart />
+    }
+
     if (isLoading) return (<div><h1>загрузка...</h1></div>)
 
     // console.log(products)
@@ -41,6 +49,9 @@ export const Cart = () => {
             </div>
             <div className="btnCart">
                 <button className="btn" onClick={() => dispatch(removeAllProductsFromCart())}>Очистить корзину</button>
+            </div>
+            <div className="btnCart">
+                <button className="btn">Купить выбранные</button>
             </div>
         </div>
     )

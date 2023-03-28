@@ -396,6 +396,7 @@ a:hover {
 
 .spans {
   display: grid;
+  margin-left: 15px;
 
   justify-content: center;
   /* background-color: red; */
@@ -421,4 +422,33 @@ a:hover {
 
 .btn3:hover {
   color: red
+}
+
+.Link {
+  display: grid;
+  justify-content: center;
+  padding-bottom: 8px;
+  row-gap: 2px;
+}
+
+.Link:hover {
+  color: crimson;
+}
+
+.checkbox {
+  height: 15px;
+  width: 5px;
+  margin: 0;
+  font-size: small;
+  border: none;
+  box-shadow: none;
+}
+
+.checkbox:focus {
+  height: 15px;
+  width: 5px;
+  margin: 0;
+  font-size: small;
+  border: none;
+  box-shadow: none;
 }
