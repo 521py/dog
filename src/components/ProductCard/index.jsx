@@ -1,4 +1,11 @@
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { addToCart } from "../../redux/slices/cart"
+
 export const ProductCard = ({ product }) => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     return (
         <div className="card">
@@ -15,7 +22,7 @@ export const ProductCard = ({ product }) => {
                 </ul>
 
                 <div className="btn_wrapper">
-                <button className="btn">В корзину</button>
+                <button className="btn" onClick={() => dispatch(addToCart(product._id))}>В корзину</button>
                 </div>
 
                 <p>Dog Food Store &</p>

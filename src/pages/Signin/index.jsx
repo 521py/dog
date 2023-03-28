@@ -1,8 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { Field, Formik, Form, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import { signinFetch } from "../../api/user";
+import { setUser } from "../../redux/slices/user";
 
 const SignInSchema = Yup.object().shape({
     password: Yup.string()
@@ -15,6 +17,7 @@ const SignInSchema = Yup.object().shape({
 export const Signin = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const initialValues = {
         password: '',
@@ -26,7 +29,11 @@ export const Signin = () => {
             const res = await signinFetch(values)
             if (res.ok) {
                 const responce = await res.json();
-                localStorage.setItem('token', responce.token)
+                dispatch(setUser({
+                    ...responce.data,
+                    token: responce.token
+                }))
+                // localStorage.setItem('token', responce.token)
                 return navigate('/products')
             }
             if (isLoading) return <p>Загрузка...</p>
@@ -48,7 +55,7 @@ export const Signin = () => {
     return (
         <div>
             <h1>заходи</h1>
-            <div className="card">
+            <div className="signwrap">
                 <div className="img_wrap">
                     <div className="container">
                         <Formik

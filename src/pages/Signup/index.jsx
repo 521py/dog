@@ -57,7 +57,7 @@ export const Signup = () => {
     return (
         <div>
             <h1>регайся</h1>
-            <div className="card">
+            <div className="signwrap">
                 <div className="img_wrap">
                     <div className="container">
                         <Formik
