@@ -452,3 +452,16 @@ a:hover {
   border: none;
   box-shadow: none;
 }
+
+.footerLinks {
+  display: grid;
+  justify-content: center;
+}
+
+.footerLinks a {
+  color: blue;
+}
+
+.footerLinks a:hover {
+  color: red;
+}
