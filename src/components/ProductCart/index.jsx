@@ -37,13 +37,13 @@ export const ProductCart = ({ product: { name, price, discount, pictures, _id, s
                         <button className="btn" onClick={() => dispatch(decrementProduct(_id))}>
                             -
                         </button>
-                        <span>количество 1 /</span>
+                        <span> Количество: {count} </span>
                         <button className="btn" onClick={() => dispatch(incrementProduct(_id))} disabled={count === stock}>
                             +
                         </button>
                     </div>
                     <div className="spans2">
-                        <span> стоимость {totalPrice(count, price, discount)} rubles</span>
+                        <span> 💵 Стоимость: {totalPrice(count, price, discount)} rubles</span>
                     </div>
                     <div className="spans">
                         <button className="btn3" onClick={() => dispatch(removeFromCart(_id))}>
