@@ -465,3 +465,8 @@ a:hover {
 .footerLinks a:hover {
   color: red;
 }
+
+.footerDiv {
+  display: flex;
+  justify-content: space-between;
+}
