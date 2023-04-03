@@ -3,14 +3,12 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 export const useAuth = () => {
-    const navigate = useNavigate()
-    const { token } = useSelector(state => state.user)
+  const navigate = useNavigate()
+  const { token } = useSelector(state => state.user)
 
-    // console.log(token)
+  useEffect(() => {
+    if (!token) navigate('/signin')
+  }, [navigate, token])
 
-    useEffect(() => {
-        if (!token) navigate('/signin')
-    }, [navigate, token])
-
-    return { token }
+  return { token }
 }

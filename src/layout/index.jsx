@@ -4,13 +4,13 @@ import { Header } from "./Header"
 
 export const Layout = () => {
 
-    return (
-        <>
-            <Header />
-            <main>
-                <Outlet />
-            </main>
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  )
 }

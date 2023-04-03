@@ -5,33 +5,32 @@ import { useDebounce } from "../../hooks/useDebounce"
 import { changeSearchValue } from "../../redux/slices/filter"
 
 export const Search = () => {
-    const [searchParams] = useSearchParams()
-    const [value, setValue] = useState(() => {
-        const searching = searchParams.get('search')
+  const [searchParams] = useSearchParams()
+  const [value, setValue] = useState(() => {
+    const searching = searchParams.get('search')
 
-        return searching ? searching : ""
-    })
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const debounceValue = useDebounce(value, 500);
+    return searching ? searching : ""
+  })
 
-    useEffect(() => {
-        dispatch(changeSearchValue(debounceValue))
-    }, [debounceValue, dispatch])
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const debounceValue = useDebounce(value, 500);
 
-    // console.log(searchParams.get('search'));
+  useEffect(() => {
+    dispatch(changeSearchValue(debounceValue))
+  }, [debounceValue, dispatch])
 
-    const handleChange = (event) => {
-        setValue(event.target.value)
+  const handleChange = (event) => {
+    setValue(event.target.value)
 
-        if (event.target.value) {
-            return navigate({
-                pathname: "/products",
-                search: `?search=${event.target.value}`
-            })
-        }
-        return navigate("/products")
+    if (event.target.value) {
+      return navigate({
+        pathname: "/products",
+        search: `?search=${event.target.value}`
+      })
     }
+    return navigate("/products")
+  }
 
-    return <input value={value} onChange={handleChange} />
+  return <input value={value} onChange={handleChange} type="search" />
 }

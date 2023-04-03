@@ -20,6 +20,7 @@ import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favotites';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { MainPage } from './pages/MainPage';
+import { AboutTheProduct } from './pages/AboutTheProduct';
 
 const queryClient = new QueryClient()
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products />,
+      },
+      {
+        path: "products/:productId",
+        element: <AboutTheProduct />,
       },
       {
         path: "user/me",
@@ -58,7 +63,7 @@ const router = createBrowserRouter([
         element: <NotFoundPage />,
       },
       {
-        path: "/main",
+        index: "/",
         element: <MainPage />,
       },
 

@@ -2,9 +2,9 @@
 export const Favorites = () => {
 
 
-    return (
-        <div>
-            <h2>favorites</h2>
-        </div>
-    )
+  return (
+    <div>
+      <h1>favorites</h1>
+    </div>
+  )
 }
