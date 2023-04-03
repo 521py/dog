@@ -4,7 +4,7 @@ export const NoProductsInCart = () => {
 
     return (
         <div>
-            <h2>твоя корзина пустая, переходи по ссылкам ниже </h2>
+            <h1>твоя корзина пустая, переходи по ссылкам ниже </h1>
             <div className="NavLinkWrapper2">
                 <Link className="Link" to={"/products"}>Каталог</Link>
                 <Link className="Link" to={"/"}>Главная страница</Link>
