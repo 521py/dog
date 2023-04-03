@@ -7,7 +7,7 @@ export const ProductCardInCart = ({ product: { name, price, discount, pictures, 
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
 
-  const { count, isChecked } = undefined || cart.find(el => el.id === _id)
+  const { count, isChecked } = cart.find(el => el.id === _id) ? cart.find(el => el.id === _id) : undefined
 
   const handleChange = (event) => {
     dispatch(changeCheckStatus({ _id, isChecked: event.target.checked }))
