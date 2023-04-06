@@ -310,13 +310,9 @@ input:focus {
   width: 50vw;
   margin: 100px auto;
   background: white;
-  /* border-radius: 5px; */
   font-size: xx-large;
   outline: none;
   border: transparent;
-
-  /* padding: 10px; */
-  /* background-color: #6355a4; */
 }
 
 .btn2 {
@@ -440,7 +436,6 @@ a:hover {
   margin-left: 15px;
 
   justify-content: center;
-  /* background-color: red; */
   font-size: x-large;
   font-weight: 900;
 }
@@ -517,10 +512,6 @@ a:hover {
 .footerDiv {
   display: flex;
   justify-content: space-between;
-}
-
-.cartt {
-  /* background-color: green; */
 }
 
 .cardInCart {
