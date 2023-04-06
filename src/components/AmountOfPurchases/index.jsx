@@ -30,10 +30,7 @@ export const AmountOfPurchases = () => {
   return (
     <div className="card">
       <p>К оформлению: </p>
-      <ol>В твоей корзине: 
-      {/* {productsChecked.map(element => <li>{element.name}</li>)} */}
-      </ol>
-      <li>Сумма: {totalPriceOfAll} rubles</li>
+      <li>Общая сумма: {totalPriceOfAll} rubles</li>
     </div>
   )
 }

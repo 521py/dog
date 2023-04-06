@@ -9,9 +9,12 @@ export const filterSlice = createSlice({
       state.search = action.payload
       return state
     },
+    changeSortingValue: (state, action) => {
+      state.sorting = action.payload
+    }
   }
 })
 
-export const { changeSearchValue } = filterSlice.actions
+export const { changeSearchValue, changeSortingValue } = filterSlice.actions
 
 export const filterReducer = filterSlice.reducer

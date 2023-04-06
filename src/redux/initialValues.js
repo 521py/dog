@@ -13,7 +13,6 @@ export const getInitialValues = () => {
   }
 }
 
-
 export const initialUserState = {
   token: "",
   name: "",
@@ -27,6 +26,7 @@ export const initialUserState = {
 
 export const initialFilterState = {
   search: "",
+  sorting: "",
 }
 
 export const initialCartState = []

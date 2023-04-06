@@ -154,11 +154,15 @@ code {
   }
 
   50% {
-    background-color: green;
+    background-color: greenyellow;
   }
 
   75% {
-    background-color: brown;
+    background-color: pink;
+  }
+
+  100% {
+    background-color: plum;
   }
 
   100% {
