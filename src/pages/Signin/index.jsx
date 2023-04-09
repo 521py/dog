@@ -36,7 +36,7 @@ export const Signin = () => {
 
         return navigate('/products')
       }
-      // поправить error
+
       return alert({ error })
     },
   })

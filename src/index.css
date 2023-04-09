@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 9rem;
-
   display: grid;
   justify-content: center;
 }
@@ -14,13 +13,11 @@ body {
 .signwrap {
   display: grid;
   position: sticky;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   flex: 0 1 20%;
   margin: 1rem;
   padding: 10px;
-
   min-width: 240px;
   max-width: auto;
 }
@@ -28,13 +25,11 @@ body {
 .signwrap:hover {
   display: grid;
   position: sticky;
-
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   flex: 0 1 20%;
   margin: 1rem;
   padding: 10px;
-
   min-width: 240px;
   max-width: auto;
 }
@@ -50,10 +45,8 @@ code {
   flex: 0 1 20%;
   margin: 1rem;
   padding: 10px;
-
   min-width: 240px;
   max-width: 250px;
-
   padding-top: 25px;
   padding-bottom: 25px;
 }
@@ -64,7 +57,6 @@ code {
   flex: 0 1 20%;
   margin: 1rem;
   padding: 10px;
-
   min-width: 240px;
   max-width: auto;
 }
@@ -81,8 +73,6 @@ code {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  /* background-color: #adff2f; */
 }
 
 .img_wrap {
@@ -107,7 +97,6 @@ code {
 .user_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  /* max-width: 350px; */
   flex: 0 1 20%;
   margin: 1rem;
   padding: 10px;
@@ -138,8 +127,6 @@ code {
   color: black;
   font-weight: bold;
   animation: myanimation 10s infinite;
-
-  /* width: auto; */
   max-width: 95vw;
   min-width: 85vw;
 }
@@ -263,7 +250,6 @@ footer:hover {
   padding: 0px;
   margin-bottom: 1px;
   font-size: small;
-
 }
 
 .str input:hover {
@@ -434,7 +420,6 @@ a:hover {
 .spans {
   display: grid;
   margin-left: 15px;
-
   justify-content: center;
   font-size: x-large;
   font-weight: 900;
